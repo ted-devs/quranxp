@@ -1,6 +1,6 @@
-# quranxp
+# QuranXP
 
-A new Flutter project.
+A cross platform Quran reading application built using Flutter. This is an open source project under the **GNU GPL v3.0** `gpl-3.0` license.
 
 ## Getting Started
 
