@@ -1,3 +1,4 @@
+import '../data/surah_list.dart';
 
 class Surah {
   int id;
@@ -24,22 +25,7 @@ class Surah {
         nameEnglish = map['translated_name']['name'],
         versesCount = map['verses_count'];
 
-  @override
-  String toString() {
-    return 'Id: $id\n'
-        'Revelation Place: $revelationPlace\n'
-        'Simple Name: $nameSimple\n'
-        'Arabic Name: $nameArabic\n'
-        'English Name: $nameEnglish\n'
-        'Number of Verses: $versesCount';
-  }
-
-  Map<String, dynamic> toMap() => {
-        'id': id,
-        'revelation_place': revelationPlace,
-        'name_simple': nameSimple,
-        'name_arabic': nameArabic,
-        'name_english': nameEnglish,
-        'verses_count': versesCount,
-      };
+  static final List<Surah> value =
+      SurahList.value.map((x) => Surah.fromMap(x)).toList();
+  static final int length = SurahList.value.length;
 }

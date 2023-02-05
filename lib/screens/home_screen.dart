@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
-import '../models/counter.dart';
-import '../widgets/count.dart';
+import '../models/surah.dart';
+import '../widgets/surah_list_item.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key, required this.title});
@@ -14,18 +13,13 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text(title)),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const <Widget>[
-            Text('You have pushed the button this many times.'),
-            Count(),
-          ],
+        child: ListView.builder(
+          itemBuilder: (context, index) => Container(
+            padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+            child: SurahListItem(index),
+          ),
+          itemCount: Surah.length,
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => context.read<Counter>().increment(),
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
       ),
     );
   }
