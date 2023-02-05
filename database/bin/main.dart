@@ -1,19 +1,13 @@
 import 'dart:convert';
 
-import 'package:database/database.dart' as database;
-import 'package:database/models/chapter.dart';
+import 'package:database/models/quran_db.dart';
+import 'package:database/models/surah.dart';
 import 'package:http/http.dart' as http;
+import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 void main(List<String> arguments) async {
-  // print('Hello world: ${database.calculate()}!');
-  final httpPackageUrl = Uri.parse(
-    "https://api.quran.com/api/v4/chapters?language=en",
-  );
+  sqfliteFfiInit();
 
-  final httpPackageInfo = await http.read(httpPackageUrl);
-
-  Map<String, dynamic> map = jsonDecode(httpPackageInfo);
-
-  Chapter chapter = Chapter.fromMap(map['chapters'][0]);
-  print(chapter);
+  var db = await databaseFactoryFfi.openDatabase("quranxp.db");
+  // QuranDb.initializeDb(db);
 }
