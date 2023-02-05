@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'models/counter.dart';
-import 'pages/home_page.dart';
+import 'screens/home_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [ChangeNotifierProvider(create: (_) => Counter())],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -15,10 +20,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'QuranXP',
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: ChangeNotifierProvider(
-        create: (context) => Counter(),
-        child: const HomePage(title: 'QuranXP Home Page'),
-      ),
+      home: const HomeScreen(title: 'QuranXP'),
     );
   }
 }
